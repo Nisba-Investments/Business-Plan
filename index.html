@@ -278,6 +278,65 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            line-height: 1.3;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        /* Business model specific cards */
+        .business-model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .business-model-card {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-top: 4px solid var(--primary-blue);
+            transition: all 0.3s ease;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .business-model-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .business-model-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .business-model-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--warm-gray);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            word-wrap: break-word;
+        }
+
+        .business-model-description {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         /* Stats and Metrics */
@@ -467,8 +526,43 @@
             flex-shrink: 0;
         }
 
-        /* Mobile Responsiveness */
+        /* Mobile Responsiveness - Enhanced */
+        @media (max-width: 1024px) {
+            .nav {
+                gap: 1.5rem;
+            }
+
+            .logo {
+                margin-right: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .sidebar {
+                width: 250px;
+            }
+
+            .main-content {
+                margin-left: 250px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .nav {
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+                margin-right: 1rem;
+            }
             .mobile-menu-toggle {
                 display: block;
             }
@@ -480,12 +574,14 @@
                 right: 0;
                 background: var(--white);
                 flex-direction: column;
-                padding: 2rem;
+                padding: 1rem;
                 box-shadow: var(--shadow);
                 transform: translateY(-100%);
                 opacity: 0;
                 transition: all 0.3s ease;
                 z-index: 1001;
+                max-height: 70vh;
+                overflow-y: auto;
             }
 
             .nav-menu.mobile-open {
@@ -493,8 +589,39 @@
                 opacity: 1;
             }
 
+            .nav-item {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+
+            .nav-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                padding: 1rem;
+                border-radius: 8px;
+                border: 1px solid #e5e7eb;
+                background: #f9fafb;
+                text-align: center;
+                font-size: 0.9rem;
+            }
+
+            .nav-link:hover,
+            .nav-link.active {
+                background: var(--primary-blue);
+                color: white;
+                border-color: var(--primary-blue);
+            }
+
+            .plan-badge {
+                display: none;
+            }
+
             .sidebar {
                 transform: translateX(-100%);
+                width: 280px;
+                z-index: 1000;
             }
 
             .sidebar.mobile-open {
@@ -508,20 +635,77 @@
 
             .page-header {
                 padding: 2rem 1rem;
+                margin-bottom: 1rem;
             }
 
             .page-title {
                 font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
             }
 
             .section {
                 padding: 1.5rem;
+                margin-bottom: 1rem;
+                border-radius: 12px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            /* Business model responsive adjustments */
+            .business-model-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .business-model-card {
+                padding: 1.2rem;
+                min-height: 160px;
+                text-align: center;
+            }
+            
+            .business-model-title {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+                line-height: 1.2;
+            }
+            
+            .business-model-price {
+                font-size: 1.5rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .business-model-description {
+                font-size: 0.85rem;
+                line-height: 1.3;
             }
 
             .card-grid,
             .stats-grid,
             .feature-list {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .financial-highlight {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+
+            .highlight-number {
+                font-size: 2rem;
+            }
+
+            .highlight-text {
+                font-size: 1rem;
             }
 
             .timeline {
@@ -534,10 +718,200 @@
 
             .timeline-marker {
                 left: -2px;
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
             }
 
             .timeline-item {
                 padding-left: 40px;
+                margin-bottom: 1.5rem;
+            }
+
+            .timeline-content {
+                padding: 1rem;
+            }
+
+            .timeline-title {
+                font-size: 1rem;
+            }
+
+            .table-container {
+                margin: 1rem 0;
+                border-radius: 8px;
+            }
+
+            .table {
+                min-width: 500px;
+                font-size: 0.8rem;
+            }
+
+            .table th,
+            .table td {
+                padding: 0.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .feature-item {
+                padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 0.8rem;
+            }
+
+            .feature-icon {
+                align-self: center;
+            }
+
+            .back-to-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+            }
+
+            /* Mobile menu overlay */
+            .mobile-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .mobile-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .page-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .highlight-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .feature-item {
+                padding: 0.8rem;
+            }
+
+            .timeline-item {
+                padding-left: 35px;
+            }
+
+            .timeline-content {
+                padding: 0.8rem;
+            }
+
+            .main-content {
+                padding: 0.5rem;
+            }
+
+            /* Improved touch targets */
+            .nav-link {
+                min-height: 48px;
+                padding: 0.8rem;
+            }
+
+            .menu-item {
+                min-height: 48px;
+                padding: 0.8rem 1rem;
+            }
+
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            /* Enhanced mobile business model */
+            .business-model-card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+                min-height: 140px;
+            }
+
+            .business-model-title {
+                font-size: 0.9rem;
+                margin-bottom: 0.6rem;
+                line-height: 1.3;
+            }
+
+            .business-model-price {
+                font-size: 1.3rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .business-model-description {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+
+            /* Better spacing for small screens */
+            .stats-grid {
+                gap: 0.8rem;
+            }
+
+            .card-grid {
+                gap: 0.8rem;
+            }
+
+            .feature-list {
+                gap: 0.8rem;
             }
         }
 
@@ -612,7 +986,7 @@
                 </button>
                 <ul class="nav-menu" id="navMenu">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active" onclick="showDocument('business-plan')">
+                        <a href="#" class="nav-link active">
                             <i class="fas fa-file-alt"></i> Business Plan
                         </a>
                     </li>
@@ -622,7 +996,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" onclick="showDocument('product-roadmap')">
+                        <a href="#" class="nav-link">
                             <i class="fas fa-road"></i> Product Roadmap
                         </a>
                     </li>
@@ -632,12 +1006,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" onclick="showDocument('cost-analysis')">
+                        <a href="#" class="nav-link">
                             <i class="fas fa-calculator"></i> Development Cost Analysis
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <div class="plan-badge">COMPLETE SUITE</div>
                     </li>
                 </ul>
             </nav>
@@ -648,184 +1019,61 @@
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <nav class="sidebar-menu">
-                <!-- Business Plan Menu -->
-                <div id="business-plan-menu" class="document-menu">
-                    <div class="menu-section">
-                        <div class="menu-section-title">Business Plan</div>
-                        <a href="#" class="menu-item active" onclick="showPage('home')">
-                            <i class="fas fa-home"></i> Executive Summary
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('overview')">
-                            <i class="fas fa-building"></i> Company Overview
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('market')">
-                            <i class="fas fa-chart-line"></i> Market Analysis
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('product')">
-                            <i class="fas fa-cogs"></i> Product & Technology
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('business-model')">
-                            <i class="fas fa-coins"></i> Business Model
-                        </a>
-                    </div>
-                    
-                    <div class="menu-section">
-                        <div class="menu-section-title">Strategy & Operations</div>
-                        <a href="#" class="menu-item" onclick="showPage('marketing')">
-                            <i class="fas fa-bullhorn"></i> Marketing & Sales
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('operations')">
-                            <i class="fas fa-cogs"></i> Operations Plan
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('team')">
-                            <i class="fas fa-users"></i> Management Team
-                        </a>
-                    </div>
-                    
-                    <div class="menu-section">
-                        <div class="menu-section-title">Financial & Investment</div>
-                        <a href="#" class="menu-item" onclick="showPage('financials')">
-                            <i class="fas fa-chart-bar"></i> Financial Projections
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('funding')">
-                            <i class="fas fa-pound-sign"></i> Funding Requirements
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('risks')">
-                            <i class="fas fa-exclamation-triangle"></i> Risk Analysis
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('growth')">
-                            <i class="fas fa-rocket"></i> Growth Strategy
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('conclusion')">
-                            <i class="fas fa-handshake"></i> Investment Opportunity
-                        </a>
-                    </div>
+                <div class="menu-section">
+                    <div class="menu-section-title">Overview</div>
+                    <a href="#" class="menu-item active" onclick="showPage('home')">
+                        <i class="fas fa-home"></i> Executive Summary
+                    </a>
+                    <a href="#" class="menu-item" onclick="showPage('overview')">
+                        <i class="fas fa-building"></i> Company Overview
+                    </a>
+                    <a href="#" class="menu-item" onclick="showPage('market')">
+                        <i class="fas fa-chart-line"></i> Market Analysis
+                    </a>
+                    <a href="#" class="menu-item" onclick="showPage('product')">
+                        <i class="fas fa-cogs"></i> Product & Technology
+                    </a>
+                    <a href="#" class="menu-item" onclick="showPage('business-model')">
+                        <i class="fas fa-coins"></i> Business Model
+                    </a>
                 </div>
-
-                <!-- Executive Summary Menu -->
-                <div id="executive-summary-menu" class="document-menu" style="display: none;">
-                    <div class="menu-section">
-                        <div class="menu-section-title">Executive Summary</div>
-                        <a href="#" class="menu-item active" onclick="showPage('exec-overview')">
-                            <i class="fas fa-star"></i> Overview
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('exec-market')">
-                            <i class="fas fa-chart-line"></i> Market Opportunity
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('exec-solution')">
-                            <i class="fas fa-lightbulb"></i> Solution
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('exec-business')">
-                            <i class="fas fa-coins"></i> Business Model
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('exec-financials')">
-                            <i class="fas fa-chart-bar"></i> Financial Highlights
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('exec-team')">
-                            <i class="fas fa-users"></i> Team
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('exec-funding')">
-                            <i class="fas fa-pound-sign"></i> Funding
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('exec-investment')">
-                            <i class="fas fa-rocket"></i> Why Invest
-                        </a>
-                    </div>
+                
+                <div class="menu-section">
+                    <div class="menu-section-title">Strategy & Operations</div>
+                    <a href="#" class="menu-item" onclick="showPage('marketing')">
+                        <i class="fas fa-bullhorn"></i> Marketing & Sales
+                    </a>
+                    <a href="#" class="menu-item" onclick="showPage('operations')">
+                        <i class="fas fa-cogs"></i> Operations Plan
+                    </a>
+                    <a href="#" class="menu-item" onclick="showPage('team')">
+                        <i class="fas fa-users"></i> Management Team
+                    </a>
                 </div>
-
-                <!-- Product Roadmap Menu -->
-                <div id="product-roadmap-menu" class="document-menu" style="display: none;">
-                    <div class="menu-section">
-                        <div class="menu-section-title">Product Roadmap</div>
-                        <a href="#" class="menu-item active" onclick="showPage('roadmap-overview')">
-                            <i class="fas fa-map"></i> Strategic Overview
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('roadmap-phases')">
-                            <i class="fas fa-calendar-alt"></i> Development Phases
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('roadmap-features')">
-                            <i class="fas fa-list"></i> Feature Roadmap
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('roadmap-technical')">
-                            <i class="fas fa-code"></i> Technical Evolution
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('roadmap-expansion')">
-                            <i class="fas fa-globe"></i> Market Expansion
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('roadmap-metrics')">
-                            <i class="fas fa-chart-line"></i> Success Metrics
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Technical Architecture Menu -->
-                <div id="technical-architecture-menu" class="document-menu" style="display: none;">
-                    <div class="menu-section">
-                        <div class="menu-section-title">System Architecture</div>
-                        <a href="#" class="menu-item active" onclick="showPage('arch-overview')">
-                            <i class="fas fa-sitemap"></i> System Overview
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('arch-principles')">
-                            <i class="fas fa-cogs"></i> Architecture Principles
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('arch-stack')">
-                            <i class="fas fa-layer-group"></i> Technology Stack
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('arch-database')">
-                            <i class="fas fa-database"></i> Database Design
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('arch-api')">
-                            <i class="fas fa-exchange-alt"></i> API Design
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('arch-security')">
-                            <i class="fas fa-shield-alt"></i> Security & Compliance
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('arch-scalability')">
-                            <i class="fas fa-expand-arrows-alt"></i> Scalability
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('arch-deployment')">
-                            <i class="fas fa-rocket"></i> Development & Deployment
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Cost Analysis Menu -->
-                <div id="cost-analysis-menu" class="document-menu" style="display: none;">
-                    <div class="menu-section">
-                        <div class="menu-section-title">Development Costs</div>
-                        <a href="#" class="menu-item active" onclick="showPage('cost-overview')">
-                            <i class="fas fa-chart-pie"></i> Cost Overview
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('cost-team')">
-                            <i class="fas fa-users"></i> Development Team
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('cost-infrastructure')">
-                            <i class="fas fa-server"></i> Technology Infrastructure
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('cost-content')">
-                            <i class="fas fa-graduation-cap"></i> Content & Education
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('cost-marketing')">
-                            <i class="fas fa-bullhorn"></i> Marketing & Acquisition
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('cost-phases')">
-                            <i class="fas fa-calendar-alt"></i> Phase Breakdown
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('cost-optimization')">
-                            <i class="fas fa-chart-line"></i> Cost Optimization
-                        </a>
-                        <a href="#" class="menu-item" onclick="showPage('cost-roi')">
-                            <i class="fas fa-percentage"></i> ROI Analysis
-                        </a>
-                    </div>
+                
+                <div class="menu-section">
+                    <div class="menu-section-title">Financial & Investment</div>
+                    <a href="#" class="menu-item" onclick="showPage('financials')">
+                        <i class="fas fa-chart-bar"></i> Financial Projections
+                    </a>
+                    <a href="#" class="menu-item" onclick="showPage('funding')">
+                        <i class="fas fa-pound-sign"></i> Funding Requirements
+                    </a>
+                    <a href="#" class="menu-item" onclick="showPage('risks')">
+                        <i class="fas fa-exclamation-triangle"></i> Risk Analysis
+                    </a>
+                    <a href="#" class="menu-item" onclick="showPage('growth')">
+                        <i class="fas fa-rocket"></i> Growth Strategy
+                    </a>
+                    <a href="#" class="menu-item" onclick="showPage('conclusion')">
+                        <i class="fas fa-handshake"></i> Investment Opportunity
+                    </a>
                 </div>
             </nav>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Business Plan Document -->
-            <div id="business-plan-document" class="document-container">
             <!-- Home Page (Executive Summary) -->
             <div id="home" class="page active">
                 <div class="page-header islamic-pattern">
@@ -943,26 +1191,26 @@
                     <h2 class="section-title">
                         <i class="fas fa-coins"></i> Business Model
                     </h2>
-                    <div class="card-grid">
-                        <div class="card">
-                            <div class="card-title">Individual Subscriptions</div>
-                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-blue); margin: 1rem 0;">£29-99/month</div>
-                            <p>Coaching and premium features for individual users</p>
+                    <div class="business-model-grid">
+                        <div class="business-model-card">
+                            <div class="business-model-title">Individual Subscriptions</div>
+                            <div class="business-model-price">£29-99/month</div>
+                            <div class="business-model-description">Coaching and premium features for individual users</div>
                         </div>
-                        <div class="card">
-                            <div class="card-title">Corporate Contracts</div>
-                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-blue); margin: 1rem 0;">£5-15/employee/month</div>
-                            <p>Enterprise solutions for employee financial wellness</p>
+                        <div class="business-model-card">
+                            <div class="business-model-title">Corporate Contracts</div>
+                            <div class="business-model-price">£5-15/employee/month</div>
+                            <div class="business-model-description">Enterprise solutions for employee financial wellness</div>
                         </div>
-                        <div class="card">
-                            <div class="card-title">Educational Courses</div>
-                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-blue); margin: 1rem 0;">£199-499</div>
-                            <p>Comprehensive certification programs</p>
+                        <div class="business-model-card">
+                            <div class="business-model-title">Educational Courses</div>
+                            <div class="business-model-price">£199-499</div>
+                            <div class="business-model-description">Comprehensive certification programs</div>
                         </div>
-                        <div class="card">
-                            <div class="card-title">Platform Referrals</div>
-                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-blue); margin: 1rem 0;">0.5-1%</div>
-                            <p>Commission from halal investment platforms</p>
+                        <div class="business-model-card">
+                            <div class="business-model-title">Platform Referrals</div>
+                            <div class="business-model-price">0.5-1%</div>
+                            <div class="business-model-description">Commission from halal investment platforms</div>
                         </div>
                     </div>
                 </div>
@@ -3184,196 +3432,3 @@
                     </div>
                 </div>
             </div>
-                                
-        </main>
-    </div>
-
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <script>
-        // Document and Page Management
-        let currentDocument = 'business-plan';
-        let currentPage = 'home';
-
-        function showDocument(documentId) {
-            // Hide all document containers
-            const documents = document.querySelectorAll('.document-container');
-            documents.forEach(doc => doc.style.display = 'none');
-            
-            // Hide all document menus
-            const menus = document.querySelectorAll('.document-menu');
-            menus.forEach(menu => menu.style.display = 'none');
-            
-            // Show selected document and its menu
-            const selectedDoc = document.getElementById(documentId + '-document');
-            const selectedMenu = document.getElementById(documentId + '-menu');
-            
-            if (selectedDoc) {
-                selectedDoc.style.display = 'block';
-                currentDocument = documentId;
-            }
-            
-            if (selectedMenu) {
-                selectedMenu.style.display = 'block';
-            }
-            
-            // Update top navigation
-            updateTopNavigation(documentId);
-            
-            // Show first page of the document
-            const firstPage = getFirstPageOfDocument(documentId);
-            showPage(firstPage);
-            
-            // Close mobile menus
-            closeMobileMenus();
-        }
-
-        function getFirstPageOfDocument(documentId) {
-            const pageMapping = {
-                'business-plan': 'home',
-                'executive-summary': 'exec-overview', 
-                'product-roadmap': 'roadmap-overview',
-                'technical-architecture': 'arch-overview',
-                'cost-analysis': 'cost-overview'
-            };
-            return pageMapping[documentId] || 'home';
-        }
-
-        function showPage(pageId) {
-            // Hide all pages in current document
-            const currentDocContainer = document.getElementById(currentDocument + '-document');
-            if (currentDocContainer) {
-                const pages = currentDocContainer.querySelectorAll('.page');
-                pages.forEach(page => page.classList.remove('active'));
-                
-                // Show selected page
-                const selectedPage = document.getElementById(pageId);
-                if (selectedPage) {
-                    selectedPage.classList.add('active');
-                    currentPage = pageId;
-                    
-                    // Update sidebar navigation
-                    updateSidebarNavigation(pageId);
-                    
-                    // Scroll to top
-                    window.scrollTo(0, 0);
-                    
-                    // Close mobile menus
-                    closeMobileMenus();
-                }
-            }
-        }
-
-        function updateTopNavigation(activeDocumentId) {
-            // Update top navigation
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            // Find and activate the correct nav item
-            const activeNavItem = document.querySelector(`[onclick="showDocument('${activeDocumentId}')"]`);
-            if (activeNavItem) {
-                activeNavItem.classList.add('active');
-            }
-        }
-
-        function updateSidebarNavigation(activePageId) {
-            // Update sidebar navigation
-            const menuItems = document.querySelectorAll('.menu-item');
-            menuItems.forEach(item => item.classList.remove('active'));
-            
-            // Find and activate the correct menu item
-            const activeMenuItem = document.querySelector(`[onclick="showPage('${activePageId}')"]`);
-            if (activeMenuItem) {
-                activeMenuItem.classList.add('active');
-            }
-        }
-
-        // Mobile Menu Management
-        function toggleMobileMenu() {
-            const navMenu = document.getElementById('navMenu');
-            const sidebar = document.getElementById('sidebar');
-            
-            navMenu.classList.toggle('mobile-open');
-            sidebar.classList.toggle('mobile-open');
-        }
-
-        function closeMobileMenus() {
-            const navMenu = document.getElementById('navMenu');
-            const sidebar = document.getElementById('sidebar');
-            
-            navMenu.classList.remove('mobile-open');
-            sidebar.classList.remove('mobile-open');
-        }
-
-        // Scroll to top function
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Scroll management
-        function handleScroll() {
-            const backToTop = document.getElementById('backToTop');
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add scroll listener
-            window.addEventListener('scroll', handleScroll);
-            
-            // Close mobile menus when clicking outside
-            document.addEventListener('click', function(event) {
-                const nav = document.querySelector('.nav');
-                const sidebar = document.getElementById('sidebar');
-                const navMenu = document.getElementById('navMenu');
-                
-                if (!nav.contains(event.target) && !sidebar.contains(event.target)) {
-                    closeMobileMenus();
-                }
-            });
-
-            // Add keyboard navigation
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape') {
-                    closeMobileMenus();
-                }
-            });
-
-            // Add hover effects to cards
-            const cards = document.querySelectorAll('.card, .stat-card, .feature-item');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-
-            // Initial scroll check
-            handleScroll();
-
-            // Initialize with business plan
-            showDocument('business-plan');
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                closeMobileMenus();
-            }
-        });
-    </script>
-</body>
-</html>
